@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MqWebApp2", "MqWebApp2.csproj", "{76344B3A-D6AC-4D50-A28C-7F9F505BC107}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76344B3A-D6AC-4D50-A28C-7F9F505BC107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76344B3A-D6AC-4D50-A28C-7F9F505BC107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76344B3A-D6AC-4D50-A28C-7F9F505BC107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76344B3A-D6AC-4D50-A28C-7F9F505BC107}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FA1E65B-68DB-4D2D-9C07-59FBF7CEBA42}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,298 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MqWebApp2.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> </title>
+
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Nunito:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/Content/images/honda-logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/boxicons/css/boxicons.min.css" rel="stylesheet"  type="image/x-icon"/>
+    <link href="~/Content/boxicons/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"  type="image/x-icon"/>
+    <link href="/Scripts/datepicker.min.css" rel="stylesheet"  type="text/css"/>
+    <script src="/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="/Scripts/jquery-3.4.1.js"></script>
+    
+    
+    
+
+</head>
+<body>
+
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <!--=========Header Top=============-->
+        <div class="header-mq">
+            <div class="userheader">
+               <p>Hi, <asp:Label ID="UserFullNameSession" runat="server" Text=""></asp:Label></p>
+            </div>
+            <div class="dateheader">
+                <p><%: DateTime.Now.ToString("dddd, dd MMMM yyyy") %></p>
+	            
+             </div>
+        </div>
+     
+        <!--==============Left Navigation Bar====================-->
+       <div class="l-navbar" id="nav-bar">
+          <nav class="nav_mq">
+              <div> 
+                        <a href="/Homepage.aspx" class="nav_logo_mq">
+                        <img src="/Content/images/honda-logo.png" class="img-rounded" width="30" height="23" alt="honda-logo"> 
+                        <span class="nav_logo-name_mq">Market Quality</span></a>
+                  
+                        <div class="nav_list_mq">
+
+                            <!--======Icon can be found on https://boxicons.com/ ========-->
+                            <div  runat="server" id="admintools"><!--Admin function --->
+                                <div class="nav_link_mq"><div runat="server" id="UserMgmntIcon"><i class='bx bx-wrench nav_icon_mq'></i></div>
+                                    
+                                        <a href="/UserMgmnt.aspx" class="nav_name_mq">User Management </a>
+                                </div>
+                            </div>
+
+                            <div class="nav_link_mq">
+                                <div id="SupplierInfoDiv" runat="server">
+                                <i class='bx bx-cart nav_icon_mq'></i></div>
+                                <a href="/SupplierInfo.aspx" class="nav_name_mq" >Supplier Info</a>
+                            </div>
+
+                            <div class="nav_link_mq">
+                                <div id="WarrantyIcon" runat="server">
+                                    <i class='bx bx-receipt nav_icon_mq'></i>
+                                </div>
+                                <a><span class="nav_name_mq"   data-toggle="collapse" data-target="#Warranty" aria-expanded="false" aria-controls="Warranty" >Warranty Monitoring</span></a>
+                            <asp:Panel runat="server" class="collapse nav-box-collapse" id="Warranty">
+                               
+
+                            <!--Add Application Month-->
+                            <div href="Add_Month_Record.aspx" class="nav_link_mq">
+                                <div id="ApplicationMonth" runat="server">
+                                    <i class='bx bx-calendar nav_icon_mq'></i>
+                                </div>
+                                <a href="/Add_Month_Record.aspx" class="nav_name_mq">Add&nbsp;Month</a>
+                            </div>
+
+                            <!--LP Supplier Nav With Sublist-->
+                            <div class="nav_link_mq" data-toggle="collapse" data-target="#LPSupp"  >
+                                <div id="Div1" runat="server">
+                                    <i class='bx bx-map-pin nav_icon_mq'></i>
+                                </div>
+                                <a><span class="nav_name_mq" >LP Supplier</span>&nbsp;<i class='bx bxs-down-arrow nav-icon-sublist'></i></a>
+                                <asp:Panel runat="server" class="collapse nav-box-collapse" id="LPSupp">
+                                    
+                                    <!--LP Overview-->
+                                    <div runat="server" id="LPsublist1" class="nav-sublist">
+                                        <ul><li>
+                                                <div runat="server" id="LPOverviewLink">
+                                                <a href="/LP_Supplier.aspx" class="nav_name_mq">LP&nbsp;Overview</a>
+                                                </div>
+                                        </li></ul>
+                                    </div>
+                                    <!--LP Edit Month-->
+                                    <div runat="server" id="LPsublist2" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="LPEditLink">
+                                                <a href="/Edit_Month_LP.aspx" class="nav_name_mq">Edit&nbsp;Month</a>
+                                            </div>                                            
+                                        </li></ul>
+                                    </div>
+                                    <!--LP Add New Record-->
+                                    <div runat="server" id="LPsublist3" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="LPAddRecordLink">
+                                                <a href="/Add_Claim_Record_LP.aspx" class="nav_name_mq">Add&nbsp;New&nbsp;Record</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                    <!--LP Edit Record-->
+                                    <div runat="server" id="LPsublist4" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="LPEditRecordLink">
+                                                <a href="/EditRecordLP.aspx" class="nav_name_mq">Edit&nbsp;Record</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                    <!--LP Summary-->
+                                    <div runat="server" id="LPsublist5" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="LPSummaryLink">
+                                                <a href="/LP_Summary.aspx" class="nav_name_mq">Total&nbsp;Amount<br />&&nbsp;Case</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+
+                                </asp:Panel> 
+                            </div>
+
+                            <!--KD Supplier Nav With Sublist-->
+                            <div class="nav_link_mq" data-toggle="collapse" data-target="#KDSupp" >
+                                <div id="Div2" runat="server">
+                                    <i class='bx bx-world nav_icon_mq'></i>
+                                </div>
+                                <a><span class="nav_name_mq" >KD Supplier</span>&nbsp;<i class='bx bxs-down-arrow nav-icon-sublist'></i></a>
+                                <asp:Panel runat="server" class="collapse nav-box-collapse" id="KDSupp">
+                                    <div runat="server" id="KDsublist1" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="KDOverviewLink">
+                                                <a href="/KD Supplier Part/KD_Supplier.aspx" class="nav_name_mq">KD&nbsp;Overview</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                    <div runat="server" id="KDsublist2" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="KDEditMonthLink">
+                                                <a href="/KD%20Supplier%20Part/KD_Edit_Month" class="nav_name_mq">Edit&nbsp;Month</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                    <div runat="server" id="KDsublist3" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="KDAddRecordLink">
+                                                <a href="/KD%20Supplier%20Part/KD_Add_Claim" class="nav_name_mq">Add&nbsp;New&nbsp;Record</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                    <div runat="server" id="KDsublist4" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="KDEditClaimLink">
+                                                <a href="/KD%20Supplier%20Part/KD_Edit_Claim" class="nav_name_mq">Edit&nbsp;Record</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                    <div runat="server" id="KDsublist5" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="KDSummaryLink">
+                                                <a href="/KD%20Supplier%20Part/KD_Summary" class="nav_name_mq">Total&nbsp;Amount<br />&&nbsp;Case</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                </asp:Panel> 
+                            </div>
+
+                            <!--PUD Claim Nav With Sublist-->
+                            <div class="nav_link_mq" data-toggle="collapse" data-target="#PUDClaim" >
+                                <div id="Div3" runat="server">
+                                    <i class='bx bx-book-add nav_icon_mq'></i>
+                                </div>
+                                <a><span class="nav_name_mq" >PUD Claim</span>&nbsp;<i class='bx bxs-down-arrow nav-icon-sublist'></i></a>
+                                <asp:Panel runat="server" class="collapse nav-box-collapse" id="PUDClaim">
+                                    <div runat="server" id="PUDsublist1" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="PUDOverviewLink">
+                                                <a href="/PUD%20Claim/PUD_Claim" class="nav_name_mq">PUD&nbsp;Overview</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                    <div runat="server" id="PUDsublist2" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="PUDEditMonthLink">
+                                                <a href="/PUD%20Claim/PUD_Edit_Month" class="nav_name_mq">Edit&nbsp;Month</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                    <div runat="server" id="PUDsublist3" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="PUDAddRecordLink">
+                                                <a href="/PUD%20Claim/PUD_Add_Claim" class="nav_name_mq">Add&nbsp;New&nbsp;Record</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                    <div runat="server" id="PUDsublist4" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="PUDEditRecordLink">
+                                                <a href="/PUD%20Claim/PUD_Edit_Claim" class="nav_name_mq">Edit&nbsp;Record</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                    <div runat="server" id="PUDsublist5" class="nav-sublist">
+                                        <ul><li>
+                                            <div runat="server" id="PUDSummaryLink">
+                                                <a href="/PUD%20Claim/PUD_Summary" class="nav_name_mq">Total&nbsp;Amount<br />&&nbsp;Case</a>
+                                            </div>
+                                        </li></ul>
+                                    </div>
+                                </asp:Panel> 
+                            </div>
+
+                            <!--All Claim-->
+                            <div class="nav_link_mq">
+                                <div id="Div4" runat="server">
+                                    <i class='bx bx-bar-chart-alt nav_icon_mq'></i>
+                                </div>
+                                <a href="/All%20Claim/All_Claim" class="nav_name_mq">All&nbsp;Claim</a>
+                                
+                            </div>
+
+                            </asp:Panel></div>
+
+                            
+
+                        </div>
+              </div> 
+              <div class="nav_link_mq"><i class='bx bx-log-out nav_icon_mq'></i>
+                  <asp:LinkButton ID="SignOutBtn" OnClick="SignOutBtn_Click" runat="server">
+                      <span class="nav_name_mq"> Sign Out</span>
+                      </asp:LinkButton>
+              </div>
+          </nav>
+      </div> <!-- ======= End of Left Navigation Bar ======= -->
+       <script src="Scripts/bootstrap.js" type="javascript"></script>
+
+        <div class="body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer class="container">
+                <p>&copy; <%: DateTime.Now.Year %> - Market Quality Warranty Monitoring System</p>
+            </footer>
+            </div>
+    </form>
+
+    <script>
+
+            /*===== LINK ACTIVE =====*/
+            const linkColor = document.querySelectorAll('.nav_link_mq')
+
+            function colorLink(){
+                if(linkColor){
+                    linkColor.forEach(l => l.classList.remove('nav_link_mq-active'))
+                    this.classList.add('nav_link_mq-active')
+                }
+            }
+            linkColor.forEach(l=> l.addEventListener('click', colorLink))
+
+            
+    </script>
+
+    </body>
+    </html>
+
+
